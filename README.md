@@ -131,6 +131,14 @@ ___
 
 ### 跳脫字元
 ```
-加上反引號 (\)
+加上反引號 (\)，用來跳過特殊字元的特殊功能
+
 ```
+
+
+## Git
+### clone the repo
+權限搞定也生成 repo 後，要怎麼把 repo 的檔案抓下來呢？
+- 首先，點選那個綠綠的 Clone or download
+![alt text](https://miro.medium.com/max/1400/1*3mYhpf1uoC236w9XOWMjkg.png)
 
