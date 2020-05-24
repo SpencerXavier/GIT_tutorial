@@ -139,6 +139,46 @@ ___
 ## Git
 ### clone the repo
 權限搞定也生成 repo 後，要怎麼把 repo 的檔案抓下來呢？
-- 首先，點選那個綠綠的 Clone or download
+- step 1，點選那個綠綠的 Clone or download
 ![alt text](https://miro.medium.com/max/1400/1*3mYhpf1uoC236w9XOWMjkg.png)
+
+- step 2，git clone 綠色的URL
+```
+cd ~/Desktop
+git clone <url> 
+```
+
+### basic command
+![alt text](https://miro.medium.com/max/1400/1*_KPtphNY_dqN5nQlbah9iw.png)
+
+```
+- 加到 暫存區 （集貨倉的概念）
+- 放到儲存庫，也就是會生成一個 commit （出貨）
+
+*add
+我們一般的作業區是 “working directory”
+- git status 來查看目前 Git 的狀態
+- git add file 把檔案存到 staging area
+
+```
+![alt text](https://miro.medium.com/max/1400/1*2uJSUpVN0EEV1fCu5jAHHw.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
