@@ -211,26 +211,156 @@ git checkout cat - 切到cat branch
 
 git push origin cat
 ```
+![alt text](https://miro.medium.com/max/1400/1*KqaNZV-bOniIG4rBOJLi8A.png)
+![alt text](https://miro.medium.com/max/1400/1*T5ubxhh79WK7aZKcvoAJCw.png)
 
 ```
 我們現在來看一下 Git 的狀態
 可以發現遠端的 Head 與本地端 Head 還是不同步
-
+``
 雖然 push 了，但遠端沒有改變 (｡ŏ_ŏ) 
 要怎麼讓遠端和本地端同步更新呢？
 ```
-
-![alt text](https://miro.medium.com/max/1400/1*KqaNZV-bOniIG4rBOJLi8A.png)
-
+![alt text](https://miro.medium.com/max/1400/1*spIDAJUlune8owYiFrdkYA.png)
 
 
+```
+*pull request (同步遠端)
+1.打開我們的 repo 查看
+發現只有一個 commit 和 一條 branch，還沒有完全更新好( ´•̥̥̥ω•̥̥̥` )
+不過仔細一看！多了一個按鈕！
+
+2.點擊 Compare & pull request
+提醒你的協作夥伴：「我 push 一個 commit 囉」
+3. 按下 Create pull request
+4. 在右手邊，可以選擇 tag 其他人 review 或 assign
+這個內容主要是要讓你的主管（？？總之是這個 repo 的主要負責者審核、確定內容用的
+有種提交檔案更新申請書的感覺
+注意上面的 branch 是 cat 合併到主幹 master，順序反了 cat 就變成主幹了，會不好管理
+
+5. 按下 Merge pull request
+這個動作主要會將 cat 更新的內容合併到 master 裡
+由於這是我測試用的，沒有人跟我協作，所以我們就自己幫自己審核通過嚕
+
+```
+![alt text](https://miro.medium.com/max/1400/1*_zaz1jY5GcppqYP2bNmtxw.png)
+
+![alt text](https://miro.medium.com/max/1400/1*7N-EMaN1-rsgdPev9wGoRw.png)
+
+![alt text](https://miro.medium.com/max/1400/1*JVv5SC-u2mXoKojQ1x3rwA.png)
+
+![alt text](https://miro.medium.com/max/1400/1*T_Q0B38lDiUgrg5m5T4pIQ.png)
+
+
+```
+*merge完成就可以刪掉branch
+6. 點擊 Delete branch
+Wait ! Wait ! Wait ! 為什麼我要刪掉我的 cat branch？
+這是一個工作流程叫做 GitHub Flow
+是一個統一的工作 SOP 讓工作更有效率！d(d＇∀＇)
+
+```
+![alt text](https://miro.medium.com/max/1400/1*DZUvL_ALNDVCfipX1vWyCQ.png)
+![alt text](https://miro.medium.com/max/1400/1*yedGvdFbcgvfGjlBpH6BFA.gif)
+
+
+#### 重點回顧
+```
+第一步：Create branch
+也就是我們剛剛的 cat
+第二步：Add commits
+也就是 git commit -m"add hello"
+第三步：Open a Pull Request
+我們回到 repo 點擊的綠色按鈕（Compare & pull request）
+第四步：Discuss and Review your code
+也就是在按 merge 前，討論串的地方
+第五步：Depoly
+驗證新增的這條分支的功能是否符合期待
+若有問題，可以從 master 拉之前的檔案回復上一動
+第六步：Merge
+確定這條分支 ok，合併至 master 並刪除該分支
+
+```
+
+```
+*pull
+同步遠端後，接著要同步本地端，這個時候就要用到 pull
+pull 是 Fetch 加上 Merge
+為什麼我還要同步？我的本地端就是最新的啊？
+忘記剛剛我們剛剛刪掉一個 branch 了嗎？
+而且搞不好有人有更新檔案也說不定～
+
+
+打開終端機
+git checkout master
+先切換到主要要更新的分支 （master）
+git pull -p
+-p 可以更新分支以外，也可以順便同步分支的狀況，刪掉在遠端被刪除的分支
+
+
+或者
+git checkout master
+git pull
+git branch -d cat
+git log check現在的狀況 ，發現同步成功(僅一行紅字 origin/master , origin/head)
+````
+
+![alt text](https://miro.medium.com/max/1400/1*oWXreh5aohWB1OGZmiyVPw.png)
+
+
+```
+*突發狀況
+如果是要 pull 其他 repo 的檔案更新在我的 repo 呢？
 
 
 
+*找錯誤
+git blame hello
+也可以指定行數 ex. git blame -L 5,10 hello列出第5-10行的意思
+但知道是誰寫錯又有什麼用呢？
+這時候git又派上用場了！ git 不僅可以看程式碼是誰寫的，還可以回溯你每一個commit ！
 
 
+*回朔檔名
+還記得上面提到的 git checkout 嗎？
+沒錯！除了移動分支以外，checkout 還能回溯到之前的 commit
+也就是 git checkout HEAD~* 檔名
+那我們要怎麼知道我們要回去哪一版呢？
+還記得上面講過的 git log嗎？
+如果只想看特定檔案的紀錄的話：git log 檔名，就能馬上看到他之前的 commit
 
 
+1. git checkout HEAD~* 檔名
+＊為第幾個版本以前，也就是說:
+回到上一版是 git checkout 檔名
+回到上上一版是 git checkout HEAD~2 檔名
+reset
+當然除了這個方法也可以使用 git reset
+首先我們可以透過git log 來看之前commit的 “代號”
+
+然後輸入 git reset 代號 一樣可以跳轉到那一版
+或是一樣打 git reset HEAD~*
+```
 
 
+```
+git checkout vs git reset
+git checkout 比較像是移動 head 並將暫存更改為某一版的 commit
+如果此時再做分支就會從那一版岔開
+git checkout 示意圖：
+-A - B - C (master)
+       \
+        D (HEAD, new-branch)
+        
+但是 git reset 比較像是拆掉前面的 commit 重來
+git reset 示意圖：
+- A - B - C (HEAD, master)
+如果使用了git reset B則會變成
+- A - B (HEAD, master)
+
+```
+##### 參考資料
+```
+https://medium.com/@angela52799/為你自己學-git-筆記-github-應用篇-f2332fc59198
+```
 
