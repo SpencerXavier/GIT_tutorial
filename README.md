@@ -311,6 +311,13 @@ git log check現在的狀況 ，發現同步成功(僅一行紅字 origin/master
 ```
 *突發狀況
 如果是要 pull 其他 repo 的檔案更新在我的 repo 呢？
+git checkout -b sync
+這個動作是： branch sync+ checkout sync
+git pull (SSH Key) (分支名)
+git push origin sync
+發 PR（Merge + 刪除分支）
+git checkout master
+git pull -p
 
 
 
