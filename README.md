@@ -137,18 +137,30 @@ ___
 
 
 ## Git
-### clone the repo
-權限搞定也生成 repo 後，要怎麼把 repo 的檔案抓下來呢？
-- step 1，點選那個綠綠的 Clone or download
-![alt text](https://miro.medium.com/max/1400/1*3mYhpf1uoC236w9XOWMjkg.png)
+### procedure
+```
+a. git clone < url > -  clone the project 
+b. git add . or git add file  - add to staging area:
+c. git status - check status (optional)
+d. git commit -a -m  - a stands for add , m stands for message, commit to repository
+e. git log - check  commit record (optional)
+f. git push - push 意即將本機端的檔案推向 server端
+g. pull request - 點擊 Compare & pull request+  按下 Create pull reques +  按下 Merge pull request
+h.git pull -p - 同步遠端後，接著要同步本地端，這個時候就要用到 pull , -p 可以更新分支以外，也可以順便同步分支的狀況，刪掉在遠端被刪除的分支
+i. git log check現在的狀況 ，發現同步成功(僅一行紅字 origin/master , origin/head,沒有2個head)
 
-- step 2，git clone 綠色的URL
+
+
+
+```
+### clone the repo
+![alt text](https://miro.medium.com/max/1400/1*3mYhpf1uoC236w9XOWMjkg.png)
 ```
 cd ~/Desktop
 git clone <url> 
 ```
 
-### basic command
+### add, commit ,push 
 ![alt text](https://miro.medium.com/max/1400/1*_KPtphNY_dqN5nQlbah9iw.png)
 
 ```
